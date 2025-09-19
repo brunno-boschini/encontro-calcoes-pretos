@@ -18,7 +18,7 @@ img{max-width:100%;height:auto;display:block}
 .header .title{
   font-family:Oswald,Montserrat,sans-serif;
   font-weight:800; letter-spacing:.5px; text-transform:uppercase; text-align:center;
-  font-size:clamp(28px,4.5vw,64px); /* título maior */
+  font-size:clamp(28px,4.5vw,64px);
   line-height:1.1;
 }
 .header .shields{display:flex;align-items:center;gap:10px}
@@ -31,13 +31,14 @@ img{max-width:100%;height:auto;display:block}
 .hero .discobolus{
   margin:0 auto;
   filter:drop-shadow(0 20px 40px rgba(0,0,0,.6));
-  max-width:min(820px,92vw); /* mais destaque e central */
+  max-width:min(820px,92vw);
 }
 .hero .right{justify-self:center;text-align:center}
 .hero .hash{margin:8px 0 12px;color:var(--muted);font-weight:700;letter-spacing:1px}
-/* QR code um pouco menor */
+/* QR code menor */
 .hero .right img{max-width:120px}
 
+/* ——— Divisor / ornamento ——— */
 .divider{height:2px;background:#fff;opacity:.95;margin:16px auto;max-width:80%}
 .ornament{display:block;width:180px;height:auto;margin:10px auto 0}
 
@@ -61,19 +62,30 @@ img{max-width:100%;height:auto;display:block}
 
 /* ——— Sponsors / Almanaque / Logos ——— */
 .sponsors{background:#0a0a0a; padding:24px 0}
-.sponsors .row{display:grid; grid-template-columns:1fr 1fr 1fr; gap:20px; align-items:center}
+.sponsors .row{
+  display:grid; grid-template-columns:1fr 1fr 1fr; gap:20px; align-items:center;
+}
+/* Em telas grandes, dar mais espaço para o almanaque (coluna do meio) */
+@media (min-width: 992px) {
+  .sponsors .row{ grid-template-columns: 1fr 2fr 1fr; }
+}
+
 .sponsors .center{text-align:center}
 .sponsors .right{text-align:right}
 .sponsors img{max-height:64px}
-/* Almanaque maior e centralizado */
+
+/* Almanaque bem maior e centralizado */
 .sponsors img.almanaque{
-  max-height:220px;
-  margin-inline:auto;
-  display:block;
+  width: min(95%, 1100px);   /* controla pela largura para crescer de verdade */
+  max-height: none;          /* remove limite de altura */
+  height: auto;
+  margin-inline: auto;
+  display: block;
 }
+
 /* FHE menor */
 .sponsors img.logo-fhe{
-  max-height:48px;
+  max-height:44px;
   width:auto;
 }
 
@@ -91,37 +103,3 @@ img{max-width:100%;height:auto;display:block}
   border-top:1px solid #1d1d1d; text-align:center; background:#0a0a0a
 }
 .footer .brand{color:var(--gold)}
-
-/**********************************************************************************************************************************/
-/* QR um pouco menor (e consistente) */
-.hero .right img { max-width: 110px !important; }
-
-/* Almanaque maior e sempre centralizado */
-.sponsors img.almanaque {
-  max-height: 260px !important;
-  margin-inline: auto;
-  display: block;
-}
-
-/* Logo FHE um pouco menor */
-.sponsors img.logo-fhe { max-height: 44px !important; }
-
-/* Espaçamento extra acima do botão Convite (se quiser separar do bloco anterior) */
-.section .wrapper:has(.cta-btn) { padding-top: 12px; }
-
-/* Opcional: em telas grandes, reencostar QR à direita mantendo Discóbolo central */
-@media (min-width: 992px) {
-  .hero .grid {
-    grid-template-columns: 1fr 320px; /* coluna do QR menor */
-  }
-  .hero .right { justify-self: end; text-align: right; }
-}
-
-
-
-/* Almanaque maior e centralizado */
-.sponsors img.almanaque{
-  max-height: 320px !important;  /* aumente para 360px, 420px, etc */
-  margin-inline: auto;
-  display: block;
-}
