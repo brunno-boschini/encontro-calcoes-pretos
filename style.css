@@ -1,6 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Oswald:wght@500;700&display=swap');
 
-:root{--bg:#0a0a0a;--fg:#ffffff;--muted:#cfcfcf;--gold:#c8a64b;--gold-2:#8f6f22;--ink:#111;}
+/* Paleta */
+:root{
+  --bg:#000000;      /* preto mais escuro para todo o site */
+  --fg:#ffffff;      /* texto principal */
+  --muted:#cfcfcf;   /* texto secundário */
+  --gold:#c8a64b;    /* dourado */
+  --gold-2:#8f6f22;
+  --ink:#0b0b0b;     /* preto para bordas/cartões */
+}
+
+/* Reset básico */
 *{box-sizing:border-box}
 html,body{height:100%}
 body{
@@ -12,9 +22,13 @@ body{
 a{color:inherit;text-decoration:none}
 img{max-width:100%;height:auto;display:block}
 
-/* ——— HEADER (fundo do título branco) ——— */
-.header{background:#ffffff;color:#111;border-bottom:1px solid #ddd;}
-.header .bar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 0}
+/* ——— HEADER (branco) ——— */
+.header{
+  background:#ffffff; color:#111; border-bottom:1px solid #ddd;
+}
+.header .bar{
+  display:flex; align-items:center; justify-content:space-between; gap:16px; padding:16px 0;
+}
 .header .title{
   font-family:Oswald,Montserrat,sans-serif;
   font-weight:800; letter-spacing:.5px; text-transform:uppercase; text-align:center;
@@ -24,21 +38,51 @@ img{max-width:100%;height:auto;display:block}
 .header .shields{display:flex;align-items:center;gap:10px}
 .header .shields img{width:72px;height:auto}
 
-/* ——— HERO (preto, Discóbolo central) ——— */
-.hero{background:#0a0a0a;color:#fff;padding:28px 0 28px;position:relative;}
-.hero .grid{display:grid;grid-template-columns:1fr;gap:20px;align-items:center}
-.hero .badge{position:absolute;left:24px;top:24px;width:140px}
-.hero .discobolus{
-  margin:0 auto;
-  filter:drop-shadow(0 20px 40px rgba(0,0,0,.6));
-  max-width:min(820px,92vw);
+/* ——— HERO (todo preto; Discóbolo super central) ——— */
+.hero{
+  background:#000; color:#fff; padding:32px 0 28px; position:relative;
 }
-.hero .right{justify-self:center;text-align:center}
-.hero .hash{margin:8px 0 12px;color:var(--muted);font-weight:700;letter-spacing:1px}
-/* QR code menor */
-.hero .right img{max-width:120px}
 
-/* ——— Divisor / ornamento ——— */
+/* Grid do hero: por padrão tudo empilhado e centrado */
+.hero .grid{
+  display:grid; grid-template-columns:1fr; gap:20px; place-items:center;
+}
+
+/* Selo no canto, sem afetar centralização do conteúdo */
+.hero .badge{
+  position:absolute; left:24px; top:24px; width:140px;
+}
+
+/* Discóbolo: central absoluto no container */
+.hero .discobolus{
+  margin-left:auto; margin-right:auto;
+  filter:drop-shadow(0 20px 40px rgba(0,0,0,.6));
+  max-width:min(860px,92vw); /* um pouco maior e bem central */
+}
+
+/* Bloco do QR/hashtag sempre central por padrão */
+.hero .right{
+  text-align:center;
+}
+.hero .hash{
+  margin:8px 0 12px; color:var(--muted); font-weight:700; letter-spacing:1px;
+}
+/* QR menor */
+.hero .right img{ max-width:120px }
+
+/* Em telas grandes, “solta” o QR à direita sem empurrar o Discóbolo */
+@media (min-width: 992px){
+  .hero .grid{
+    grid-template-columns:1fr;  /* Discóbolo permanece sozinho e central */
+    position:relative;
+  }
+  .hero .right{
+    position:absolute; right:20px; top:50%;
+    transform:translateY(-50%); text-align:right;
+  }
+}
+
+/* Divisor/ornamento */
 .divider{height:2px;background:#fff;opacity:.95;margin:16px auto;max-width:80%}
 .ornament{display:block;width:180px;height:auto;margin:10px auto 0}
 
@@ -50,10 +94,12 @@ img{max-width:100%;height:auto;display:block}
   border:2px solid #ffffff;
   transition:transform .12s ease, filter .12s ease;
 }
-.cta-btn:hover{filter:brightness(.95); transform:translateY(-1px)}
+.cta-btn:hover{ filter:brightness(.95); transform:translateY(-1px) }
 
 /* ——— Seções ——— */
-.section{padding:32px 0; background:#0a0a0a}
+.section{
+  padding:32px 0; background:#000;   /* fundo inteiramente preto */
+}
 .section h2{
   font-family:Oswald,Montserrat,sans-serif;
   font-size:clamp(22px,4vw,34px);
@@ -61,45 +107,46 @@ img{max-width:100%;height:auto;display:block}
 }
 
 /* ——— Sponsors / Almanaque / Logos ——— */
-.sponsors{background:#0a0a0a; padding:24px 0}
+.sponsors{ background:#000; padding:24px 0 }
 .sponsors .row{
   display:grid; grid-template-columns:1fr 1fr 1fr; gap:20px; align-items:center;
 }
-/* Em telas grandes, dar mais espaço para o almanaque (coluna do meio) */
-@media (min-width: 992px) {
-  .sponsors .row{ grid-template-columns: 1fr 2fr 1fr; }
+/* Em telas grandes, mais espaço para o almanaque (coluna do meio) */
+@media (min-width: 992px){
+  .sponsors .row{ grid-template-columns:1fr 2fr 1fr; }
 }
-
 .sponsors .center{text-align:center}
 .sponsors .right{text-align:right}
 .sponsors img{max-height:64px}
 
-/* Almanaque bem maior e centralizado */
+/* Almanaque grande e centralizado (controlado por largura) */
 .sponsors img.almanaque{
-  width: min(95%, 1100px);   /* controla pela largura para crescer de verdade */
-  max-height: none;          /* remove limite de altura */
-  height: auto;
-  margin-inline: auto;
-  display: block;
+  width:min(95%, 1100px);
+  max-height:none; height:auto;
+  margin-inline:auto; display:block;
 }
 
-/* FHE menor */
+/* Logo FHE menor */
 .sponsors img.logo-fhe{
-  max-height:44px;
-  width:auto;
+  max-height:44px; width:auto;
 }
 
 /* ——— Cartão do Kit ——— */
-.card-frame{border:3px solid var(--ink);border-radius:12px;padding:12px;background:#fff;color:#111}
+.card-frame{
+  border:3px solid var(--ink); border-radius:12px; padding:12px;
+  background:#fff; color:#111;
+}
 
 /* ——— Tabela ——— */
-.table{width:100%;border-collapse:collapse;border:1px solid #2a2a2a;border-radius:12px;overflow:hidden}
-.table th, .table td{padding:14px 16px;border-bottom:1px solid #232323}
-.table thead th{background:#121212;text-align:left;letter-spacing:.6px;font-weight:800}
+.table{
+  width:100%; border-collapse:collapse; border:1px solid #2a2a2a; border-radius:12px; overflow:hidden;
+}
+.table th, .table td{ padding:14px 16px; border-bottom:1px solid #232323 }
+.table thead th{ background:#121212; text-align:left; letter-spacing:.6px; font-weight:800 }
 
 /* ——— Rodapé ——— */
 .footer{
   padding:28px 0 48px; color:#bbbbbb; font-size:14px;
-  border-top:1px solid #1d1d1d; text-align:center; background:#0a0a0a
+  border-top:1px solid #1d1d1d; text-align:center; background:#000;
 }
-.footer .brand{color:var(--gold)}
+.footer .brand{ color:var(--gold) }
