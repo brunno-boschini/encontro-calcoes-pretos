@@ -116,3 +116,12 @@ img{max-width:100%;height:auto;display:block}
   }
   .hero .right { justify-self: end; text-align: right; }
 }
+
+
+
+/* Almanaque maior e centralizado */
+.sponsors img.almanaque{
+  max-height: 320px !important;  /* aumente para 360px, 420px, etc */
+  margin-inline: auto;
+  display: block;
+}
