@@ -91,3 +91,28 @@ img{max-width:100%;height:auto;display:block}
   border-top:1px solid #1d1d1d; text-align:center; background:#0a0a0a
 }
 .footer .brand{color:var(--gold)}
+
+/**********************************************************************************************************************************/
+/* QR um pouco menor (e consistente) */
+.hero .right img { max-width: 110px !important; }
+
+/* Almanaque maior e sempre centralizado */
+.sponsors img.almanaque {
+  max-height: 260px !important;
+  margin-inline: auto;
+  display: block;
+}
+
+/* Logo FHE um pouco menor */
+.sponsors img.logo-fhe { max-height: 44px !important; }
+
+/* Espaçamento extra acima do botão Convite (se quiser separar do bloco anterior) */
+.section .wrapper:has(.cta-btn) { padding-top: 12px; }
+
+/* Opcional: em telas grandes, reencostar QR à direita mantendo Discóbolo central */
+@media (min-width: 992px) {
+  .hero .grid {
+    grid-template-columns: 1fr 320px; /* coluna do QR menor */
+  }
+  .hero .right { justify-self: end; text-align: right; }
+}
