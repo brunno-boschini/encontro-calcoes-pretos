@@ -121,7 +121,7 @@ img{max-width:100%;height:auto;display:block}
 
 /* Almanaque grande e centralizado (controlado por largura) */
 .sponsors img.almanaque{
-  width:min(95%, 900px);
+  width:min(95%, 600px);
   max-height:none; height:auto;
   margin-inline:auto; display:block;
 }
