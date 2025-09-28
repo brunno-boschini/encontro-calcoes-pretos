@@ -29,13 +29,20 @@ img{max-width:100%;height:auto;display:block}
 .header .bar{
   display:flex; align-items:center; justify-content:space-between; gap:16px; padding:16px 0;
 }
-.header .title{
+.header {
+  background: var(--gold);   /* fundo dourado */
+  color: #fff;               /* cor padrão dos textos no header */
+  border-bottom:1px solid #ddd;
+}
+.header .title {
   font-family:Oswald,Montserrat,sans-serif;
-  font-weight:800; letter-spacing:.5px; text-transform:uppercase; text-align:center;
+  font-weight:800;
+  letter-spacing:.5px;
+  text-transform:uppercase;
+  text-align:center;
   font-size:clamp(28px,4.5vw,64px);
   line-height:1.1;
-  /* TÍTULO EM DOURADO */
-  color: var(--gold);
+  color:#fff;                /* título em branco */
 }
 .header .shields{display:flex;align-items:center;gap:10px}
 .header .shields img{width:72px;height:auto}
