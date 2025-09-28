@@ -34,6 +34,8 @@ img{max-width:100%;height:auto;display:block}
   font-weight:800; letter-spacing:.5px; text-transform:uppercase; text-align:center;
   font-size:clamp(28px,4.5vw,64px);
   line-height:1.1;
+  /* TÍTULO EM DOURADO */
+  color: var(--gold);
 }
 .header .shields{display:flex;align-items:center;gap:10px}
 .header .shields img{width:72px;height:auto}
@@ -48,10 +50,8 @@ img{max-width:100%;height:auto;display:block}
   display:grid; grid-template-columns:1fr; gap:20px; place-items:center;
 }
 
-/* Selo no canto, sem afetar centralização do conteúdo */
-.hero .badge{
-  position:absolute; left:24px; top:24px; width:140px;
-}
+/* Badge removido (caso a tag ainda exista por engano) */
+.hero .badge{ display:none }
 
 /* Discóbolo: central absoluto no container */
 .hero .discobolus{
@@ -111,7 +111,6 @@ img{max-width:100%;height:auto;display:block}
 .sponsors .row{
   display:grid; grid-template-columns:1fr 1fr 1fr; gap:20px; align-items:center;
 }
-/* Em telas grandes, mais espaço para o almanaque (coluna do meio) */
 @media (min-width: 992px){
   .sponsors .row{ grid-template-columns:1fr 2fr 1fr; }
 }
